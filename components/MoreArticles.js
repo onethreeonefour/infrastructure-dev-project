@@ -6,38 +6,44 @@ function MoreArticles() {
   const currentDate = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
   const [Articles, setArticles] = useState([
     {
+      id: 4,
       title: "Auckland City Hospital project commences",
-      src: "images/more-articles/1.png",
+      src: "/images/more-articles/1.png",
       readtime: 2,
       date: currentDate,
     },
     {
+      id: 5,
       title: "Procurement for Coomera Connector Stage One begins ",
-      src: "images/more-articles/2.png",
+      src: "/images/more-articles/2.png",
       readtime: 2,
       date: currentDate,
     },
     {
+      id: 6,
       title: "NSW Government releases plan for supporting the transition to renewables",
-      src: "images/more-articles/3.png",
+      src: "/images/more-articles/3.png",
       readtime: 2,
       date: currentDate,
     },
     {
+      id: 7,
       title: "Infrastructure Victoria releases updated infrastructure strategy",
-      src: "images/more-articles/4.png",
+      src: "/images/more-articles/4.png",
       readtime: 2,
       date: currentDate,
     },
     {
+      id: 8,
       title: "Procurement commences for Greater Sydney Bus Region Nine",
-      src: "images/more-articles/5.png",
+      src: "/images/more-articles/5.png",
       readtime: 2,
       date: currentDate,
     },
     {
+      id: 9,
       title: "2020-2021 West Australian Budget",
-      src: "images/more-articles/6.png",
+      src: "/images/more-articles/6.png",
       readtime: 2,
       date: currentDate,
     },
@@ -50,7 +56,7 @@ function MoreArticles() {
           return (
             <div key={index} className="article-card">
               <div>
-                <img src={item.src} alt="" />
+                <img src={item.src} alt="article" />
               </div>
               <div className="article-card-inner-info">
                 <div>
@@ -58,11 +64,11 @@ function MoreArticles() {
                 </div>
                 <div>
                   <span>
-                    <img src="images/articles/clock.svg" alt="clock" />
+                    <img src="/images/articles/clock.svg" alt="clock" />
                     {item.readtime} Min Read
                   </span>
                   <span>
-                    <img src="images/articles/calendar.svg" alt="calendar" />
+                    <img src="/images/articles/calendar.svg" alt="calendar" />
                     {item.date}
                   </span>
                 </div>
@@ -96,12 +102,13 @@ const MoreArticlesContainer = styled.div`
     display: flex;
     gap: 1rem;
     align-items: center;
-    transition: 0.3s ease-in-out all;
     padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
     border-top: 3px solid rgba(22, 63, 103, 1);
-    cursor: pointer;
+
+    h3 {
+      cursor: pointer;
+    }
     img {
       border-radius: 0.2rem;
     }
@@ -112,17 +119,36 @@ const MoreArticlesContainer = styled.div`
     span {
       align-items: center;
       color: #51b4b2;
-      font-weight: 400;
+      font-weight: 100;
       margin-right: 1rem;
+      font-size: 0.9rem;
       img {
-        width: 15px;
-        height: 15px;
+        width: 12.5px;
+        height: 12.5px;
         margin-right: 0.5rem;
       }
     }
   }
-  .article-card:hover {
-    transform: translateY(-10px);
+  .article-card-inner-info h3:hover {
+    color: #2b8cec;
+  }
+  @media only screen and (max-width: 3840px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 2560px) {
+    width: 60%;
+  }
+  @media only screen and (max-width: 1920px) {
+    width: 80%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .articles-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    width: 90%;
   }
 `;
 

@@ -1,31 +1,25 @@
 import Head from "next/head";
 import styled from "styled-components";
-import Banner from "../components/Banner";
-import MoreArticles from "../components/MoreArticles";
+import Link from "next/link";
 import { useState } from "react";
 
+//components
+import Banner from "../components/Banner";
+import MoreArticles from "../components/MoreArticles";
+
+//drop down list
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
 export default function Home() {
   const currentDate = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
-  const classes = useStyles();
   const [Articles, setArticles] = useState([
     {
+      id: 0,
       title: "SA Government calls for Electric Vehicle road user charge in 2020-21 Budget",
       date: currentDate,
       tag: ["economy", "budgets"],
@@ -33,6 +27,7 @@ export default function Home() {
       src: "images/articles/1.webp",
     },
     {
+      id: 1,
       title: "Tasmanian and NT Governments hand down 2020-21 Budgets",
       date: currentDate,
       tag: ["water"],
@@ -40,6 +35,7 @@ export default function Home() {
       src: "images/articles/2.webp",
     },
     {
+      id: 2,
       title: "Victorian Government alters procurement approach for North East Link",
       date: currentDate,
       tag: ["tax", "budgets"],
@@ -47,6 +43,7 @@ export default function Home() {
       src: "images/articles/3.webp",
     },
     {
+      id: 3,
       title: "ARTC progresses two major Inland Rail works packages",
       date: currentDate,
       tag: ["economy"],
@@ -70,7 +67,7 @@ export default function Home() {
         </div>
         <div className="filter-container">
           <p>Sort By</p>
-          <FormControl className={classes.formControl}>
+          <FormControl>
             <InputLabel id="demo-simple-select-label">Location</InputLabel>
             <Select labelId="demo-simple-select-label" value={"Sydney"}>
               <MenuItem value={"Sydney"}>Sydney</MenuItem>
@@ -78,7 +75,7 @@ export default function Home() {
               <MenuItem value={"Adelaide"}>Adelaide</MenuItem>
             </Select>
           </FormControl>
-          <FormControl className={classes.formControl}>
+          <FormControl>
             <InputLabel id="demo-simple-select-label">Subject</InputLabel>
             <Select labelId="demo-simple-select-label" value={"Transport"}>
               <MenuItem value={"Transport"}>Transport</MenuItem>
@@ -86,7 +83,7 @@ export default function Home() {
               <MenuItem value={"Recycling"}>Recycling</MenuItem>
             </Select>
           </FormControl>
-          <FormControl className={classes.formControl}>
+          <FormControl>
             <InputLabel id="demo-simple-select-label">Issue Month</InputLabel>
             <Select labelId="demo-simple-select-label" value={"January"}>
               <MenuItem value={"January"}>January</MenuItem>
@@ -108,10 +105,9 @@ export default function Home() {
         <h1>
           Latest Edition <span>{currentDate}</span>
         </h1>
-
         {Articles.map((item, index) => {
           return (
-            <div key={index} className="article-card">
+            <div className="article-card" key={index}>
               <div className="card-image">
                 <img src={item.src} alt="" />
               </div>
@@ -135,7 +131,9 @@ export default function Home() {
                     })}
                   </span>
                 </div>
-                <h2 className="article-title">{item.title}</h2>
+                <Link href={`/article/${item.id}`}>
+                  <h2 className="article-title">{item.title}</h2>
+                </Link>
               </div>
             </div>
           );
@@ -181,16 +179,20 @@ const FilteredArticles = styled.div`
       display: flex;
       align-items: center;
       color: #51b4b2;
-      font-weight: 500;
+      font-weight: 300;
     }
     img {
-      height: 30px;
-      width: 30px;
+      height: 25px;
+      width: 25px;
       margin-right: 0.5rem;
     }
   }
   .article-title {
     width: 60%;
+    cursor: pointer;
+  }
+  .article-title:hover {
+    color: #2b8cec;
   }
   .article-detail-tags {
     margin-left: auto;
@@ -200,6 +202,34 @@ const FilteredArticles = styled.div`
     border: 1px solid #51b4b2;
     margin: 0 5px;
     padding: 0.25rem 1rem;
+  }
+  @media only screen and (max-width: 3840px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 2560px) {
+    width: 60%;
+  }
+  @media only screen and (max-width: 1920px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 1024px) {
+    .article-details-container {
+      flex-direction: column;
+    }
+    .article-detail-tags {
+      margin: 0;
+    }
+    .article-title {
+      width: 100%;
+    }
+    .article-card {
+      grid-template-columns: repeat(1, 1fr);
+      img {
+      }
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    width: 90%;
   }
 `;
 
@@ -231,5 +261,33 @@ const Search = styled.div`
     gap: 1.75rem;
     align-items: center;
     color: #163f67;
+  }
+  @media only screen and (max-width: 3840px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 2560px) {
+    width: 60%;
+  }
+  @media only screen and (max-width: 1920px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    flex-direction: column;
+    .filter-container {
+      margin: 1rem auto;
+      align-items: flex-start;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .filter-container {
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .search-input-container {
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
   }
 `;

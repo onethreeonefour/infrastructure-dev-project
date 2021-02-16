@@ -9,7 +9,7 @@ function Banner() {
       <div className="banner-image">
         <div className="triangle-1"></div>
         <div className="triangle-2"></div>
-        <img src="images/banner/banner-image.jpg" alt="building" />
+        <img src="/images/banner/banner-image.jpg" alt="building" />
       </div>
     </BannerContainer>
   );
@@ -34,7 +34,7 @@ const BannerContainer = styled.div`
     justify-content: center;
     h1 {
       text-decoration: underline;
-      text-underline-offset: 10px;
+      text-underline-offset: 5px;
     }
   }
   .banner-image {
@@ -63,5 +63,25 @@ const BannerContainer = styled.div`
     right: 0;
     width: 300px;
     height: 300px;
+  }
+  @media only screen and (max-width: 1024px) {
+    .banner-text {
+      width: 50vw;
+    }
+    .banner-image {
+      width: 50vw;
+    }
+  }
+  @media only screen and (max-width: 540px) {
+    .banner-text {
+      width: 100vw;
+    }
+    .banner-image {
+      width: 0;
+    }
+    .triangle-1,
+    .triangle-2 {
+      display: none;
+    }
   }
 `;
