@@ -171,10 +171,10 @@ function article() {
       <ArticleActionContainer>
         {Article ? (
           <>
-            <Link href={`/article/${Math.floor(Math.random() * 4)}`}>
+            <Link href={`/article/${Article.id > 0 ? Article.id - 1 : Article.id}`}>
               <h5 className="link uppercase">&#x2190; Previous</h5>
             </Link>
-            <Link href={`/article/${Math.floor(Math.random() * 4)}`}>
+            <Link href={`/article/${Article.id >= 0 && Article.id < 3 ? Article.id + 1 : 0}`}>
               <h5 className="link uppercase">Next &#x2192;</h5>
             </Link>
           </>
