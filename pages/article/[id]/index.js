@@ -231,9 +231,8 @@ const ArticleContainer = styled.div`
     padding: 1rem 0;
     display: flex;
     gap: 1rem;
-    color: #51b4b2;
+    color: #359796;
     align-items: center;
-
     div {
       display: flex;
       align-items: center;
@@ -248,10 +247,14 @@ const ArticleContainer = styled.div`
     align-items: center;
   }
   .inner-tag {
-    border: 1px solid #51b4b2;
+    border: 1px solid #359796;
+    background: #359796;
     margin: 0 5px;
     padding: 0.25rem 1rem;
-    color: #51b4b2;
+    color: white;
+    font-weight: 400;
+    border-radius: 5px;
+    text-transform: uppercase;
   }
   .article-body {
     grid-column: 1/3;

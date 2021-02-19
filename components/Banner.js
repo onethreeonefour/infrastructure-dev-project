@@ -9,7 +9,7 @@ function Banner() {
       <div className="banner-image">
         <div className="triangle-1"></div>
         <div className="triangle-2"></div>
-        <img src="/images/banner/banner-image.jpg" alt="building" />
+        <img src="/images/banner/banner-image.webp" alt="building" />
       </div>
     </BannerContainer>
   );

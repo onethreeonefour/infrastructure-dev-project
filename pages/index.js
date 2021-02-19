@@ -8,7 +8,6 @@ import Banner from "../components/Banner";
 import MoreArticles from "../components/MoreArticles";
 
 //drop down list
-import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -68,7 +67,9 @@ export default function Home() {
         <div className="filter-container">
           <p>Sort By</p>
           <FormControl>
-            <InputLabel id="demo-simple-select-label">Location</InputLabel>
+            <InputLabel id="demo-simple-select-label" style={{ color: "black" }}>
+              Location
+            </InputLabel>
             <Select labelId="demo-simple-select-label" value={"Sydney"}>
               <MenuItem value={"Sydney"}>Sydney</MenuItem>
               <MenuItem value={"Melbourne"}>Melbourne</MenuItem>
@@ -76,7 +77,9 @@ export default function Home() {
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel id="demo-simple-select-label">Subject</InputLabel>
+            <InputLabel id="demo-simple-select-label" style={{ color: "black" }}>
+              Subject
+            </InputLabel>
             <Select labelId="demo-simple-select-label" value={"Transport"}>
               <MenuItem value={"Transport"}>Transport</MenuItem>
               <MenuItem value={"Energy"}>Energy</MenuItem>
@@ -84,7 +87,9 @@ export default function Home() {
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel id="demo-simple-select-label">Issue Month</InputLabel>
+            <InputLabel id="demo-simple-select-label" style={{ color: "black" }}>
+              Issue Month
+            </InputLabel>
             <Select labelId="demo-simple-select-label" value={"January"}>
               <MenuItem value={"January"}>January</MenuItem>
               <MenuItem value={"February"}>February</MenuItem>
@@ -124,7 +129,7 @@ export default function Home() {
                   <span className="article-detail-tags">
                     {item.tag.map((tag, index) => {
                       return (
-                        <span key={index} className="inner-tag">
+                        <span key={index} className="inner-tag" style={{ color: "white" }}>
                           {tag}
                         </span>
                       );
@@ -178,8 +183,7 @@ const FilteredArticles = styled.div`
     span {
       display: flex;
       align-items: center;
-      color: #51b4b2;
-      font-weight: 300;
+      color: #359796;
     }
     img {
       height: 25px;
@@ -199,7 +203,9 @@ const FilteredArticles = styled.div`
     text-transform: uppercase;
   }
   .inner-tag {
-    border: 1px solid #51b4b2;
+    border: 1px solid #359796;
+    background: #359796;
+    border-radius: 5px;
     margin: 0 5px;
     padding: 0.25rem 1rem;
   }

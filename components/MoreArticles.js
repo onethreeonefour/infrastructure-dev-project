@@ -90,7 +90,6 @@ const MoreArticlesContainer = styled.div`
   h1 {
     color: #163f67;
     span {
-      font-weight: 100;
     }
   }
   .articles-container {
@@ -103,8 +102,7 @@ const MoreArticlesContainer = styled.div`
     gap: 1rem;
     align-items: center;
     padding: 1rem;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
-    border-top: 3px solid rgba(22, 63, 103, 1);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.045);
 
     h3 {
       cursor: pointer;
@@ -118,8 +116,8 @@ const MoreArticlesContainer = styled.div`
     }
     span {
       align-items: center;
-      color: #51b4b2;
-      font-weight: 100;
+      color: #359796;
+      font-weight: 600;
       margin-right: 1rem;
       font-size: 0.9rem;
       img {
